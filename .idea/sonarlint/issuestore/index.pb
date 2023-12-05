@@ -17,3 +17,13 @@ J
 src/com/aoc/day1/input.txt,b\2\b28b2b4a201b8ccc6033b6dad555cba76cd77cc4
 J
 src/com/aoc/day2/input.txt,2\3\2336bfa3ffb0208411ae9eae3e83fb995a3f9a37
+J
+src/com/aoc/day5/input.txt,9\4\94557be642641aa0e98d7825c1d955087b9f2ffa
+J
+src/com/aoc/day5/Main.java,0\3\033009db0b52822feeec2f91894c310347fcc3d8
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+;
+AoC2023.iml,3\8\38b18b107f6d7347aa963a949532d4d024d2987c
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
