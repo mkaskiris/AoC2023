@@ -3,16 +3,11 @@ package com.aoc.day5;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import me.tongfei.progressbar.ProgressBar;
-import me.tongfei.progressbar.ProgressBarStyle;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.LongStream;
 
+import me.tongfei.progressbar.*;
 
 public class Main {
     private static final String FILE_NAME = "\\input.txt";
@@ -20,11 +15,18 @@ public class Main {
 
         List<String> input = readInput();
         System.out.println(input);
+        long startTime = System.currentTimeMillis();
         getAnswerPart1(input);
+        long endTime = System.currentTimeMillis();
+        displayExecutionTime(endTime - startTime);
+        startTime = System.currentTimeMillis();
         getAnswerPart2(input);
+        endTime = System.currentTimeMillis();
+        displayExecutionTime(endTime - startTime);
     }
 
     private static void getAnswerPart1(List<String> input) {
+
         String[] seeds;
         long answer = Long.MAX_VALUE;
         List<List<String>> allMaps = getLists();
@@ -48,6 +50,7 @@ public class Main {
         }
 
         System.out.println("Result part 1: " + answer);
+
     }
 
     private static List<List<String>> getLists() {
@@ -70,11 +73,10 @@ public class Main {
     }
 
     private static void getAnswerPart2(List<String> input) {
-        String[] seeds;
-        long answer = Long.MAX_VALUE;
+        String[] seeds = input.get(0).split(": ")[1].split(" ");;
+        AtomicLong answer = new AtomicLong(Long.MAX_VALUE);
         List<List<String>> allMaps = getLists();
-
-        seeds = input.get(0).split(": ")[1].split(" ");
+        Map<Long, Boolean> covered = new HashMap<>(); //not sure if it works
 
         int mapToAddIndex = -1;
         for(int i = 2; i<input.size(); i++) {
@@ -87,16 +89,43 @@ public class Main {
 
         for(int j=0; j< seeds.length; j+=2){
             long number = Long.parseLong(seeds[j]);
-            while(number < (Long.parseLong(seeds[j]) + Long.parseLong(seeds[j+1]))) {
-                long result = number;
-                for(List<String> map: allMaps){
-                    result = mappingFunction(result, map);
-                }
-                answer = Math.min(answer, result);
-                number++;
-            }
+            long endNumber = (Long.parseLong(seeds[j]) + Long.parseLong(seeds[j+1]));
+            ProgressBar.wrap(LongStream.range(number, endNumber) //this loop takes way too long to complete. need to find a better solution
+                            .parallel(), "Task" + j+1)
+                            .forEach(i ->{
+                                if(covered.containsKey(i)){
+                                    return;
+                                }
+                                long result = i;
+                                for(List<String> map: allMaps){
+                                    result = mappingFunction(result, map);
+                                }
+                                answer.set(Math.min(answer.get(), result));
+                                covered.put(i, true);
+                            }
+            );
+            System.out.println("Answer after range: " + answer);
         }
         System.out.println("Result part 2: " + answer);
+    }
+
+    static void reduceRanges(long[] array) {
+       Map<Long, Long> mapOfRanges = new HashMap<>();
+       for(int i=0;i< array.length;i+=2){
+           mapOfRanges.put(array[i], array[i+1]);
+       }
+
+
+
+    }
+
+    private static void displayExecutionTime(long executionTime) {
+        long hours = executionTime / (60 * 60 * 1000);
+        long minutes = (executionTime % (60 * 60 * 1000)) / (60 * 1000);
+        long seconds = ((executionTime % (60 * 60 * 1000)) % (60 * 1000)) / 1000;
+        long milliseconds = executionTime % 1000;
+
+        System.out.println("Execution Time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds, " + milliseconds + " milliseconds");
     }
 
     private static String getFilePath() {

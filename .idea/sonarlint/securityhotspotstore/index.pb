@@ -12,8 +12,6 @@ J
 J
 src/com/aoc/day4/Main.java,9\5\9533a9895289fcfc788b16e8d7bec22e1be6e0a8
 J
-src/com/aoc/day3/Day3.java,0\f\0f2750caefe3443e681de91659b022202859df84
-J
 src/com/aoc/day1/input.txt,b\2\b28b2b4a201b8ccc6033b6dad555cba76cd77cc4
 J
 src/com/aoc/day2/input.txt,2\3\2336bfa3ffb0208411ae9eae3e83fb995a3f9a37
