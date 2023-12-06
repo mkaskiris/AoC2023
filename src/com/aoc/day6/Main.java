@@ -1,13 +1,11 @@
 package com.aoc.day6;
 
-import me.tongfei.progressbar.ProgressBar;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.LongStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     private static final String FILE_NAME = "\\input.txt";
