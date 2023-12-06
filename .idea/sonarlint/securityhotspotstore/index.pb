@@ -25,3 +25,10 @@ S
 AoC2023.iml,3\8\38b18b107f6d7347aa963a949532d4d024d2987c
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+J
+src/com/aoc/day6/input.txt,7\4\74e194772b651b5cf47f80f56b1155e66945e15f
+J
+src/com/aoc/day6/Main.java,4\a\4a78ae52714bc0a8aeaad03f02b656f3927edad5
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

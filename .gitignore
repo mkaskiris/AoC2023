@@ -27,3 +27,10 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+.idea
+*.iws
+*.iml
+*.ipr
+*.bat
+*.log
