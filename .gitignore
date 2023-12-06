@@ -34,3 +34,4 @@ bin/
 *.ipr
 *.bat
 *.log
+/.idea/
