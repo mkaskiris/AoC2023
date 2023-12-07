@@ -94,7 +94,7 @@ public class Main {
             long number = Long.parseLong(seeds[j]);
             long endNumber = (Long.parseLong(seeds[j]) + Long.parseLong(seeds[j+1]));
             ProgressBar.wrap(LongStream.range(number, endNumber) //this loop takes way too long to complete. need to find a better solution
-                            .parallel(), "Task" + j+1)
+                            .parallel(), "Task " + (j+1))
                             .forEach(i ->{
                                 if(covered.containsKey(i)){
                                     return;
